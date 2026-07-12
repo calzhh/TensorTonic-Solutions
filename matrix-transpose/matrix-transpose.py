@@ -1,9 +1,11 @@
 import numpy as np
 
 def matrix_transpose(A):
-    B = np.zeros((len(A[0]), len(A)))
-    for i in range(len(A)):
-        for j in range(len(B)):
-            B[j][i] = A[i][j]
+    A = np.asarray(A)
+    N, M = A.shape
+    B = np.empty((M, N), dtype=A.dtype)
+
+    for i in range(N):
+        B[:, i] = A[i, :]
 
     return B
